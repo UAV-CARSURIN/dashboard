@@ -218,6 +218,14 @@ body{
 
 }
 
+@media(max-width:768px){
+
+  .fmds-submenu{
+    display:none !important;
+  }
+
+}
+
 /* ================= CONTENT ================= */
 
 .content{
@@ -569,20 +577,34 @@ function loadReport(menu, event=null){
 
   if(menu==="FMDS"){
 
-  document
-    .getElementById("fmdsSubmenu")
-    .classList.remove("hide");
+    if(isMobile()){
 
-loadFMDS("PEOPLE_HEALTH");
+      // Mobile: sembunyikan submenu FMDS
+      document
+        .getElementById("fmdsSubmenu")
+        .classList.add("hide");
 
-}
-else{
+    }
+    else{
 
-  document
-    .getElementById("fmdsSubmenu")
-    .classList.add("hide");
+      // Desktop: tampilkan submenu FMDS
+      document
+        .getElementById("fmdsSubmenu")
+        .classList.remove("hide");
 
-}
+      loadFMDS("PEOPLE_HEALTH");
+      return;
+
+    }
+
+  }
+  else{
+
+    document
+      .getElementById("fmdsSubmenu")
+      .classList.add("hide");
+
+  }
 
   document.getElementById("spinner").style.display = "block";
 
