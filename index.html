@@ -566,7 +566,10 @@ function getCurrentReportURL(menu){
 window.addEventListener("load", function(){
 
   loadReport("FMDS");
-  loadFMDS("PEOPLE_HEALTH");
+
+  if(!isMobile()){
+    loadFMDS("PEOPLE_HEALTH");
+  }
 
 });
 
